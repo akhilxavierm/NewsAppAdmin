@@ -4,7 +4,8 @@ requirejs.config({
                  paths: {
                      collections : '../collections',
                      models : '../models',
-                     views : '../views'
+                     views : '../views',
+                     templatePath: '../../templates'
                  },
                  shim: {
                     'backbone': {

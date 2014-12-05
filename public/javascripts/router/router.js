@@ -3,16 +3,18 @@ define([
         'backbone',
         'models/studentModel',
         'collections/studentCollection',
-        'views/studentView',
+        'views/addNewsView',
         
-        ], function( $, Backbone,studentModel,studentCollection,studentView) {
+        ], function( $, Backbone,studentModel,studentCollection,addNewsView) {
        
        var appRouter = Backbone.Router.extend({
 
              routes: {
                    ""     :"fetching",
-             	"listName": "listName",
-	            "listNameAndAge": "listNameAndAge"
+             	"addNews": "addNews",
+	            "editNews": "editNews",
+                "deleteNews": "deleteNews",
+                "help": "help"
 	            
         	} ,
            initialize: function(options) {
@@ -21,32 +23,24 @@ define([
 
            },
 
-        	defaultRoute:function(){
-        		
-        		console.log("default");
+           addNews:function(){
+               console.log("add News");
+
+               var addNews=new addNewsView();
+
 
         	},
-        	listNameAndAge:function(){
+           editNews:function(){
+               console.log("edit News");
 
-        		
-        		var student1=new studentModel();
-				student1.set({ name: "Thomas", age: 20});
-				student1.getName();
-				var student2=new studentModel();
-				student2.set({ name: "Arun", age: 30});
-				var student3=new studentModel();
-				student3.set({ name: "Rahul", age: 40});
-				var studentCollection1=new studentCollection([student1,student2,student3]);
-				var studentView1=new studentView({ collection:studentCollection1});
-                 
-				setTimeout(function () {
-                   
-					console.log("inside settimeout");
-					
-					
-				},3000);
+           },
+           deleteNews:function(){
+               console.log("delete News");
 
-        	},
+           },
+           help:function(){
+               console.log("help");
+           },
         	listNameOnly:function(){
         		var student1=new studentModel();
 				student1.set({ name: "Thomas", age: 20});
