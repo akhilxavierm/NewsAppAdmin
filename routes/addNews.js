@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var fs=require('fs');
 var path = require('path');
 var Db = require('mongodb').Db,
     MongoClient = require('mongodb').MongoClient,
     Server = require('mongodb').Server;
 
-/* GET users listing. */
+/* Add new News */
+
 router.post('/', function(req, res) {
     var headline = req.body.headline,
         content = req.body.content;
@@ -21,11 +21,12 @@ router.post('/', function(req, res) {
         // Get the first db and do an update document on it
         var db = mongoclient.db("news_test");
         db.collection('mycollection').insert(news, function (err, result) {
-             console.log("result--"+JSON.stringify(result));
+            console.log("result--"+JSON.stringify(result));
         });
         mongoclient.close();
-     });
+    });
 
 });
+
 
 module.exports = router;

@@ -2,7 +2,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templatePath/addNewsTemplate.html'
+    'text!templatePath/editNewsTemplate.html'
 ], function( $,_, Backbone,sampleTemplate) {
 
     var view=Backbone.View.extend({
@@ -21,9 +21,9 @@ define([
             var content=document.getElementById('addNewsContent').value;
             console.log("healine and content--"+headline+content);
             var options = {
-                url: 'http://localhost:4000/newsList',
-                type: 'GET',
-               // data: {headline:headline,content:content},
+                url: 'http://localhost:4000/users',
+                type: 'POST',
+                data: {headline:headline,content:content},
                 success: function (res) {
                     console.log("succes"+res);
 
