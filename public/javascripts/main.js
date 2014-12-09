@@ -5,6 +5,7 @@ requirejs.config({
                      collections : '../collections',
                      models : '../models',
                      views : '../views',
+                     util:'../util',
                      templatePath: '../../templates'
                  },
                  shim: {

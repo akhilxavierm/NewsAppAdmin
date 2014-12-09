@@ -38,7 +38,7 @@ newsProvider.prototype.removeById= function(newsId,callback) {
         console.log("inside newsprovider remove2");
         if(error)
             return callback(error);
-        this.db.collection('newsCollections').remove({'headline':'newsheadline1'},function (err, result) {
+        this.db.collection('newsCollections').remove({'_id':ObjectId("548597e725b0596c1422d882")},function (err, result) {
             console.log("inside newsprovider remove3");
             if(error)
                 return callback(error);;
