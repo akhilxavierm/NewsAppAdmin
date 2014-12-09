@@ -7,11 +7,10 @@ var newsProvider = new NewsProvider();
 /* Add new News */
 
 router.post('/', function(req, res) {
-    var headline = req.body.headline,
-        content = req.body.content;
-    console.log(("in add news headline and content is--"+headline+"------"+content));
-    var news={headline:headline,content:content};
-    newsProvider.save(news,function(error, docs){
+    console.log("insid remove router");
+    var id = req.body.id;
+    var newsId=id;
+    newsProvider.removeById(newsId,function(error, docs){
         if(error){
             console.log("error--in newsprovider"+JSON.stringify(error));
         }

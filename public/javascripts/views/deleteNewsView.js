@@ -8,36 +8,59 @@ define([
     var view=Backbone.View.extend({
         el: $("#addNews"),
         initialize: function(){
-            console.log("add News  view initialized");
+            console.log("delete News  view initialized");
             this.$el.html('');
-            this.render();
+            this.getNewsList();
         },
         render:function(){
             template = _.template(sampleTemplate);
             this.$el.append(template);
         },
-        addNews:function(){
-            var headline=document.getElementById('addNewsHeadline').value;
-            var content=document.getElementById('addNewsContent').value;
-            console.log("healine and content--"+headline+content);
+        getNewsList:function(){
+            console.log("inside here man");
+            var _id="5485549c40d6d4d82a7fce43";
             var options = {
-                url: 'http://localhost:4000/users',
+                url: 'http://localhost:4000/removeNews',
                 type: 'POST',
-                data: {headline:headline,content:content},
+                data: {_id:_id},
                 success: function (res) {
-                    console.log("succes"+res);
-
-
+                    console.log("succes newList"+res);
                 },
                 error: function (res) {
                     console.error("error"+res);
-
+                }
+            };
+            $.ajax(options);
+            /*var options = {
+                url: 'http://localhost:4000/newsList',
+                type: 'GET',
+                success: function (res) {
+                    console.log("succes newList"+res);
+                },
+                error: function (res) {
+                    console.error("error"+res);
+                }
+            };
+            $.ajax(options);*/
+        },
+        removeNewsById:function(){
+            console.log("inside here man");
+           var _id="5485549c40d6d4d82a7fce43";
+            var options = {
+                url: 'http://localhost:4000/removeNews',
+                type: 'POST',
+                data: {_id:_id},
+                success: function (res) {
+                    console.log("succes newList"+res);
+                },
+                error: function (res) {
+                    console.error("error"+res);
                 }
             };
             $.ajax(options);
         },
         events: {
-            'click #newsAdd': 'addNews'
+            'click #removeNews': 'removeNewsById'
         }
 
 

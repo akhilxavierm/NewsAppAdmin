@@ -19,13 +19,13 @@ define([
         addNews:function(){
             var headline=document.getElementById('addNewsHeadline').value;
             var content=document.getElementById('addNewsContent').value;
-            console.log("healine and content--"+headline+content);
+            console.log("healine and content--"+headline+"----------"+content);
             var options = {
-                url: 'http://localhost:4000/newsList',
-                type: 'GET',
-               // data: {headline:headline,content:content},
+                url: 'http://localhost:4000/addNews',
+                type: 'POST',
+                data: {headline:headline,content:content},
                 success: function (res) {
-                    console.log("succes"+res);
+                    console.log("succes--"+JSON.stringify(res));
 
 
                 },
