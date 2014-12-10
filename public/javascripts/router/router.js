@@ -22,7 +22,8 @@ define([
            },
            addNews:function(){
                console.log("add News");
-               var addNews=new addNewsView();
+               var addNews = new addNewsView();
+
            },
            editNews:function(){
                console.log("edit News");

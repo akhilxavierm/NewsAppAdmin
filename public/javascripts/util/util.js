@@ -12,7 +12,7 @@ define([
                 CallBack('', res);
             },
             error: function (res) {
-                CallBack(err);
+                CallBack(res);
             }
         };
         $.ajax(options);
@@ -21,42 +21,42 @@ define([
         switch (page){
             case "homePage":
                 $("#mainContainer").show();
-                $("#addNewContainer").hide();
+                $("#addNewsContainer").hide();
                 $("#deleteNewsContainer").hide();
                 $("#editNewsContainer").hide();
                 $("#helpContainer").hide();
                 break;
             case "addNewsPage":
-                $("#mainContainer").hide();
-                $("#addNewContainer").show();
+               // $("#mainContainer").hide();
+                $("#addNewsContainer").show();
                 $("#deleteNewsContainer").hide();
                 $("#editNewsContainer").hide();
                 $("#helpContainer").hide();
                 break;
             case "deleteNewsPage":
-                $("#mainContainer").hide();
-                $("#addNewContainer").hide();
+               // $("#mainContainer").hide();
+                $("#addNewsContainer").hide();
                 $("#deleteNewsContainer").show();
                 $("#editNewsContainer").hide();
                 $("#helpContainer").hide();
                 break;
             case "editNewsPage":
-                $("#mainContainer").hide();
-                $("#addNewContainer").hide();
+               // $("#mainContainer").hide();
+                $("#addNewsContainer").hide();
                 $("#deleteNewsContainer").hide();
                 $("#editNewsContainer").show();
                 $("#helpContainer").hide();
                 break;
             case "deleteNewsPage":
-                $("#mainContainer").hide();
-                $("#addNewContainer").hide();
+               // $("#mainContainer").hide();
+                $("#addNewsContainer").hide();
                 $("#deleteNewsContainer").hide();
                 $("#editNewsContainer").hide();
                 $("#helpContainer").show();
                 break;
             default :
-                $("#mainContainer").show();
-                $("#addNewContainer").hide();
+               // $("#mainContainer").show();
+                $("#addNewsContainer").hide();
                 $("#deleteNewsContainer").hide();
                 $("#editNewsContainer").hide();
                 $("#helpContainer").hide();

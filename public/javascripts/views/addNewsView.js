@@ -14,16 +14,19 @@ define([
             this.util.showOrHide("addNewsPage");
             this.model=new addNewsModel();
             this.render();
+            this.count=0;
         },
         render:function(){
             template = _.template(addNewsTemplate);
             this.$el.html(template);
         },
         addNews:function(){
+            console.log("this coutn--"+this.count);
+            this.count++;
+            var self=this;
             var headline=document.getElementById('addNewsHeadline').value;
             var content=document.getElementById('addNewsContent').value;
             var data={headline:headline,content:content};
-            var self=this;
             this.model.addNews(data,function(err,success){
                 if(err){
                     console.log("error ---"+JSON.stringify(err));

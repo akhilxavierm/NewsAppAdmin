@@ -1,4 +1,6 @@
-<h1>List of News</h1>
+<h2>List of News</h2>
 <% _newsList.forEach(function(el) { %>
-<div class="list"><span><a href="#" id="removeNews" data-id="<%=el._id%>"><%= el.headline %><%= el.content %></a></span></div>
+<div class="list"><span><a href="#" id="removeNews" data-id="<%=el._id%>"><%= el.headline %><%= el.content %></a></span><span class="dateSpan">Date:10-12-2014</span></div>
 <% }) %>
+
+

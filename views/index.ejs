@@ -6,18 +6,99 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 
 </head>
+<style>
+    h1{
+        text-align: center;
+        font-size: 35px;
+    }
+    #mainContainer{
+        width:90%;
+        heiht:100%;
+        float:left;
+        margin-left:5%;
+        margin-right: 5%;
+        margin-top:30px;
+        margin-bottom:100px;
+
+    }
+    .innerMainContainer{
+        width:24%;
+        height:40px;
+        background-color: grey;
+        color:midnightblue;
+        border:2px solid black;
+        font-size: 25px;
+        float:left;
+        text-align: center;
+    }
+    .innerMainContainer a{
+        //width:500px;
+        text-decoration: none;
+
+    }
+    #addNewsContainer {
+        text-align: center;
+    }
+    #deleteNewsContainer {
+        text-align: center;
+    }
+    #editNewsContainer{
+        text-align: center;
+    }
+    #helpNewsContainer{
+        text-align: center;
+    }
+    #addNewsContent{
+        height: 300px;
+        width:600px;
+    }
+    #addNewsHeadline{
+        height: 70px;
+        width:600px;
+
+    }
+    .list{
+        width:60%;
+        height:50px;
+        border:1px solid black;
+        text-align: left;
+        margin-left: 20%;
+        margin-right: 20%;
+
+    }
+    .list span{
+        font-size: 20px;
+        text-align: left;
+        padding-left: 10px;
+
+    }
+    .dateSpan{
+        float:right;
+    }
+</style>
 <body>
 
 <!--<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
 
 Headline : <input type="text" id="headline" ><br>
 Content: <input type="text"  id="content"><br>-->
+<h1>Admin Panel</h1>
 <div id="mainContainer">
-    <a href="#addNews">Add News</a><br>
-    <a href="#editNews">Edit News</a><br>
-    <a href="#deleteNews">Delete News</a><br>
-    <a href="#help">Help</a><br>
+    <div class="innerMainContainer">
+        <a href="#addNews">Add News</a>
+    </div>
+    <div class="innerMainContainer">
+        <a href="#editNews">Edit News</a>
+    </div>
+    <div class="innerMainContainer">
+        <a href="#deleteNews">Delete News</a>
+    </div>
+    <div class="innerMainContainer">
+        <a href="#help">Help</a><br>
+    </div>
 </div>
+<br>
+<div style="widht:100%;border:5px solid black;margin-top:100px"></div>
 <div id="addNewsContainer"></div>
 <div id="deleteNewsContainer"></div>
 <div id="editNewsContainer"></div>
