@@ -38,7 +38,7 @@ newsProvider.prototype.removeById= function(newsId,callback) {
         console.log("inside newsprovider remove2");
         if(error)
             return callback(error);
-        this.db.collection('newsCollections').remove({'_id':ObjectId("548597e725b0596c1422d882")},function (err, result) {
+        this.db.collection('newsCollections').remove({'_id':ObjectID(newsId)},function (err, result) {
             console.log("inside newsprovider remove3");
             if(error)
                 return callback(error);;
@@ -60,7 +60,23 @@ newsProvider.prototype.findById = function(id, callback) {
         }
     });
 };
-
+newsProvider.prototype.update=function(id,callback){
+    var self=this;
+    this.dbSettings(function(error,success) {
+        console.log("inside newsprovider upadate2");
+        if (error)
+            return callback(error);
+        this.db.collection('newsCollections').update({'_id':ObjectID(id)}, {$set: {headline: "veendum"}}, function (err, result) {
+            console.log("inside newsprovider update3");
+            if (error)
+                return callback(error);
+            ;
+            console.log("result--" + JSON.stringify(result));
+            callback('', result);
+            self.mongoclient.close();
+        });
+    });
+};
 newsProvider.prototype.save = function(news, callback) {
     var self=this;
     this.dbSettings(function(error,success){

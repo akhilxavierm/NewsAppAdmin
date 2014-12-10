@@ -4,36 +4,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script data-main="javascripts/main.js" src="javascripts/lib/require.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
-    <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-               execute();
-            });
-        });
 
-        function execute() {
-            //updateUI(UI_UPDATE_CONTEXT.request_sent);
-            var headline=document.getElementById('headline').value;
-            var content=document.getElementById('content').value;
-            console.log("healine and content--"+headline+content);
-            var options = {
-                url: 'http://localhost:4000/users',
-                type: 'POST',
-                data: {headline:headline,content:content},
-                success: function (res) {
-                    console.log("succes"+res);
-
-
-                },
-                error: function (res) {
-                    console.error("error"+res);
-
-                }
-            };
-            $.ajax(options);
-        }
-
-    </script>
 </head>
 <body>
 
@@ -41,13 +12,18 @@
 
 Headline : <input type="text" id="headline" ><br>
 Content: <input type="text"  id="content"><br>-->
-<a href="#addNews">Add News</a><br>
-<a href="#editNews">Edit News</a><br>
-<a href="#deleteNews">Delete News</a><br>
-<a href="#help">Help</a><br>
-<div id="addNews">add new divvvvvvvvvvvvn</div>
+<div id="mainContainer">
+    <a href="#addNews">Add News</a><br>
+    <a href="#editNews">Edit News</a><br>
+    <a href="#deleteNews">Delete News</a><br>
+    <a href="#help">Help</a><br>
+</div>
+<div id="addNewsContainer"></div>
+<div id="deleteNewsContainer"></div>
+<div id="editNewsContainer"></div>
+<div id="helpNewsContainer"></div>
 
-<button>Get External Content</button><input type="submit" value="Submit form">
+
 
 </body>
 </html>

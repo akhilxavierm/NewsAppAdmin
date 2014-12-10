@@ -2,39 +2,36 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templatePath/addNewsTemplate.html'
-], function( $,_, Backbone,sampleTemplate) {
+    'text!templatePath/addNewsTemplate.html','util/util','models/addNewsModel'
+], function( $,_, Backbone,addNewsTemplate,Util,addNewsModel) {
 
     var view=Backbone.View.extend({
-        el: $("#addNews"),
+        el: $("#addNewsContainer"),
         initialize: function(){
             console.log("add News  view initialized");
             this.$el.html('');
+            this.util=new Util();
+            this.util.showOrHide("addNewsPage");
+            this.model=new addNewsModel();
             this.render();
         },
         render:function(){
-            template = _.template(sampleTemplate);
-            this.$el.append(template);
+            template = _.template(addNewsTemplate);
+            this.$el.html(template);
         },
         addNews:function(){
             var headline=document.getElementById('addNewsHeadline').value;
             var content=document.getElementById('addNewsContent').value;
-            console.log("healine and content--"+headline+"----------"+content);
-            var options = {
-                url: 'http://localhost:4000/addNews',
-                type: 'POST',
-                data: {headline:headline,content:content},
-                success: function (res) {
-                    console.log("succes--"+JSON.stringify(res));
-
-
-                },
-                error: function (res) {
-                    console.error("error"+res);
-
+            var data={headline:headline,content:content};
+            var self=this;
+            this.model.addNews(data,function(err,success){
+                if(err){
+                    console.log("error ---"+JSON.stringify(err));
                 }
-            };
-            $.ajax(options);
+                else{
+                    self.render();
+                }
+            })
         },
         events: {
             'click #newsAdd': 'addNews'

@@ -17,5 +17,51 @@ define([
         };
         $.ajax(options);
     }
+    Util.prototype.showOrHide=function(page){
+        switch (page){
+            case "homePage":
+                $("#mainContainer").show();
+                $("#addNewContainer").hide();
+                $("#deleteNewsContainer").hide();
+                $("#editNewsContainer").hide();
+                $("#helpContainer").hide();
+                break;
+            case "addNewsPage":
+                $("#mainContainer").hide();
+                $("#addNewContainer").show();
+                $("#deleteNewsContainer").hide();
+                $("#editNewsContainer").hide();
+                $("#helpContainer").hide();
+                break;
+            case "deleteNewsPage":
+                $("#mainContainer").hide();
+                $("#addNewContainer").hide();
+                $("#deleteNewsContainer").show();
+                $("#editNewsContainer").hide();
+                $("#helpContainer").hide();
+                break;
+            case "editNewsPage":
+                $("#mainContainer").hide();
+                $("#addNewContainer").hide();
+                $("#deleteNewsContainer").hide();
+                $("#editNewsContainer").show();
+                $("#helpContainer").hide();
+                break;
+            case "deleteNewsPage":
+                $("#mainContainer").hide();
+                $("#addNewContainer").hide();
+                $("#deleteNewsContainer").hide();
+                $("#editNewsContainer").hide();
+                $("#helpContainer").show();
+                break;
+            default :
+                $("#mainContainer").show();
+                $("#addNewContainer").hide();
+                $("#deleteNewsContainer").hide();
+                $("#editNewsContainer").hide();
+                $("#helpContainer").hide();
+          }
+
+    }
     return Util;
 });

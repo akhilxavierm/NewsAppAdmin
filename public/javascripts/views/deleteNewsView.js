@@ -2,36 +2,53 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templatePath/deleteNewsTemplate.html','util/util'
-], function( $,_, Backbone,sampleTemplate,Util) {
+    'text!templatePath/deleteNewsTemplate.html','models/deleteNewsModel',
+    'util/util'
+], function( $,_, Backbone,deleteNewsTemplate,deleteNewsModel,Util) {
 
     var view=Backbone.View.extend({
-        el: $("#addNews"),
+        el: $("#deleteNewsContainer"),
         initialize: function(){
             console.log("delete News  view initialized");
             this.$el.html('');
             this.util=new Util();
+            this.util.showOrHide("deleteNewsPage");
+            this.model=new deleteNewsModel();
             this.getNewsList();
-
-        },
+         },
         render:function(){
-            template = _.template(sampleTemplate);
-            this.$el.append(template);
+            console.log("news list--"+JSON.stringify(this.model._newsList));
+            template = _.template(deleteNewsTemplate,this.model);
+
+            this.$el.html(template);
         },
         getNewsList:function(){
-           this.util.ajaxCall("http://localhost:4000/newsList","GET","",function(err,result){
-               console.log("result afte ajax call---"+JSON.stringify(result));
-           });
+            var self=this;
+           this.model.getFullNewsList(function(err,success){
+               if(err){
+                   console.log("error ---"+JSON.stringify(err));
+               }
+               else{
+                  self.render();
+               }
+           })
         },
-        removeNewsById:function(){
-            var _id="5485549c40d6d4d82a7fce43";
-            data= {_id:_id};
-            this.util.ajaxCall("http://localhost:4000/removeNews","POST",data,function(err,result){
-                console.log("result afte ajax call---"+JSON.stringify(result));
-            });
+        removeNewsById:function(e){
+            var _id = $(e.currentTarget).attr("data-id");
+            console.log("id firsrt---"+_id);
+            this.model.removeNewsById(_id,function(err,result){
+                if(err){
+                    console.log("error ---"+JSON.stringify(err));
+                }
+                else{
+                    console.log("success result ---"+JSON.stringify(result));
+                }
+            })
+
         },
         events: {
             'click #removeNews': 'removeNewsById'
+
         }
 
 

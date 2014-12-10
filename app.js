@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var newsList = require('./routes/newsList');
 var addNews=require('./routes/addNews');
 var removeNews=require('./routes/removeNews');
+var editNews=require('./routes/editNews');
 
 var app = express();
 var http = require('http').Server(app);
@@ -23,9 +24,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
+app.use('/editNews',editNews);
 app.use('/newsList', newsList);
 app.use('/addNews',addNews);
 app.use('/removeNews',removeNews);
+
 
 
 // catch 404 and forward to error handler

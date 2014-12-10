@@ -1,2 +1,4 @@
 <h1>List of News</h1>
-        <div id="removeNews">remove newssssssssssss</div>
+<% _newsList.forEach(function(el) { %>
+<div class="list"><span><a href="#" id="removeNews" data-id="<%=el._id%>"><%= el.headline %><%= el.content %></a></span></div>
+<% }) %>
