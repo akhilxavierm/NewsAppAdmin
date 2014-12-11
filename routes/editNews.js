@@ -8,15 +8,23 @@ var newsProvider = new NewsProvider();
 
 router.post('/', function(req, res) {
 
-   var _id = req.body.id;
+   var _id = req.body.id,
+   _headline=req.body.headline,
+   _content=req.body.content;
+    console.log("in router header and contetn-----"+_headline+"_---------"+_content);
+   var data={id:_id,headline:_headline,content:_content};
 
 
-    newsProvider.update(_id,function(error, docs){
+
+    newsProvider.update(data,function(error, docs){
         if(error){
             console.log("error--in newsprovider"+JSON.stringify(error));
         }
-        console.log("docs--"+JSON.stringify(docs));
-        //res.send(docs);
+        else{
+            console.log("docs--"+JSON.stringify(docs));
+            res.send("success");
+        }
+
     });
 
 });

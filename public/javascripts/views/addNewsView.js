@@ -26,7 +26,9 @@ define([
             var self=this;
             var headline=document.getElementById('addNewsHeadline').value;
             var content=document.getElementById('addNewsContent').value;
-            var data={headline:headline,content:content};
+            var date=this.util.currentDate();
+            var time=this.util.currentTime();
+            var data={headline:headline,content:content,date:date,time:time};
             this.model.addNews(data,function(err,success){
                 if(err){
                     console.log("error ---"+JSON.stringify(err));

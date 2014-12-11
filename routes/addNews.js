@@ -8,17 +8,20 @@ var newsProvider = new NewsProvider();
 
 router.post('/', function(req, res) {
     var headline = req.body.headline,
-        content = req.body.content;
-    console.log(("in add news headline and content is--"+headline+"------"+content));
-    var news={headline:headline,content:content};
+        content = req.body.content,
+        date=req.body.date,
+        time=req.body.time;
+
+    var news={headline:headline,content:content,date:date,time:time};
     newsProvider.save(news,function(error, docs){
         if(error){
-            console.log("error--in newsprovider"+JSON.stringify(error));
+            console.log("error in addNews"+JSON.stringify(error));
+            res.send(error);
         }
-        console.log("docs--"+JSON.stringify(docs));
-        //res.send(docs);
+        else{
+            console.log("success response in addNews"+JSON.stringify(docs));
+            res.send("success");
+        }
     });
 });
-
-
 module.exports = router;

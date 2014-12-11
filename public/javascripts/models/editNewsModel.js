@@ -18,15 +18,15 @@ define([
                 callBack('','success');
             });
         },
-        removeNewsById:function(id,callBack){
-            var _id=id;
-            data= {id:_id};
-            this.util.ajaxCall("http://localhost:4000/removeNews","POST",data,function(err,result){
+        editNewsById:function(data,callBack){
+            var data= data;
+            this.util.ajaxCall("http://localhost:4000/editNews","POST",data,function(err,result){
                 if(err)
                     return callBack(err);
                 callBack('',result);
             });
         }
+
     });
     return model;
 });

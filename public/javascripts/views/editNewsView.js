@@ -2,43 +2,71 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templatePath/editNewsTemplate.html'
-], function( $,_, Backbone,sampleTemplate) {
+    'text!templatePath/editNewsTemplate.html',
+    'text!templatePath/editTemplate.html',
+    'models/editNewsModel',
+    'util/util'
+], function( $,_, Backbone,editNewsTemplate,editTemplate,editNewsModel,Util) {
 
     var view=Backbone.View.extend({
-        el: $("#addNews"),
+        el: $("#editNewsContainer"),
         initialize: function(){
-            console.log("add News  view initialized");
-            this.$el.html('');
-            this.render();
+            this.util=new Util();
+            this.util.showOrHide("editNewsPage");
+            this.model=new editNewsModel();
+            this.getNewsList();
+            this.editHeadline=null;
+            this.editContent=null;
         },
         render:function(){
-            template = _.template(sampleTemplate);
-            this.$el.append(template);
+            var template = _.template(editNewsTemplate,this.model);
+            this.$el.html(template);
         },
-        addNews:function(){
-            var headline=document.getElementById('addNewsHeadline').value;
-            var content=document.getElementById('addNewsContent').value;
-            console.log("healine and content--"+headline+content);
-            var options = {
-                url: 'http://localhost:4000/users',
-                type: 'POST',
-                data: {headline:headline,content:content},
-                success: function (res) {
-                    console.log("succes"+res);
-
-
-                },
-                error: function (res) {
-                    console.error("error"+res);
-
+        getNewsList:function(){
+            var self=this;
+            this.model.getFullNewsList(function(err,success){
+                if(err){
+                    console.log("error ---"+JSON.stringify(err));
                 }
-            };
-            $.ajax(options);
+                else{
+                    self.render();
+                }
+            })
+        },
+        editPageRender:function(){
+            var template = _.template(editTemplate,{headline:this.editHeadline,content:this.editContent});
+            this.$el.html(template);
+        },
+        editNewsById:function(e){
+            this.editId=$(e.currentTarget).attr("data-id")
+            this.editHeadline=$(e.currentTarget).attr("data-headline");
+            console.log("editHdaldfsda-"+this.editHeadline);
+            this.editContent=$(e.currentTarget).attr("data-content");
+            this.editPageRender();
+         },
+        editNews:function(){
+            var self=this;
+            var _headline=document.getElementById('editNewsHeadline').value;
+            var _content=document.getElementById('editNewsContent').value;
+            var data={id:this.editId,headline:_headline,content:_content};
+            console.log("Data in edit news--"+JSON.stringify(data));
+             this.model.editNewsById(data,function(err,result){
+                 if(err){
+                 console.log("error ---"+JSON.stringify(err));
+                 }
+                 else{
+                 console.log("success result ---"+JSON.stringify(result));
+                     self.getNewsList();
+                 }
+             })
         },
         events: {
-            'click #newsAdd': 'addNews'
+            'click .editNews': 'editNewsById',
+            'click #editSubmit':'editNews'
+
         }
+
+
 
 
     })

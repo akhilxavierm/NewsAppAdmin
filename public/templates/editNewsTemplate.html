@@ -1,1 +1,8 @@
-<h1>List of News</h1>
+<h2>List of News</h2>
+<div class="list"><div style="width:25%;float:left;border-right: 1px solid black;text-align:center;font: 24px bold">Headline</div><div style="width:35%;float:left;border-right: 1px solid black;text-align:center;font: 24px bold">Content</div><div style="width:15%;float:left;border-right: 1px solid black;text-align:center;font: 24px bold">Time</div><div style="width:10%;float:left;border-right: 1px solid black;text-align:center;">Date</div><div style="width:10%;float:right;">Edit</div></div>
+<% _newsList.forEach(function(el) { %>
+<div class="list"><div  style="width:25%;float:left;border-right: 1px solid black;"><%= el.headline %></div><div style="width:35%;float:left;border-right: 1px solid black;"><%= el.content %></div><div style="width:15%;float:left;border-right: 1px solid black;"><%= el.time %></div><div style="width:10%;float:left;border-right: 1px solid black;"><%= el.date %></div><div style="width:10%;float:right;"><a class="editNews"  data-id="<%=el._id%>"  data-headline="<%=el.headline%>" data-content="<%=el.content%>" style="color:blue">Edit</a></div></div>
+<!--<div class="list"><span><a href="#" class="removeNews" data-id="<%=el._id%>"><%= el.headline %><%= el.content %></a></span><span class="dateSpan" style="margin-right:20px"><%=el.date%></span><span class="dateSpan"><%=el.time%></span></div>-->
+<% }) %>
+
+

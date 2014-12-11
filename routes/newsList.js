@@ -7,12 +7,11 @@ var newsProvider = new NewsProvider();
 /* GET News listing. */
 
 router.get('/',function(req,res){
-    newsProvider.findAll(function(error, docs){
+    newsProvider.findAll(function(error, result){
         if(error){
             console.log("error--in newsprovider"+JSON.stringify(error));
         }
-        console.log("docs--"+JSON.stringify(docs));
-        res.send(docs);
+        res.send(result);
     });
 
 });

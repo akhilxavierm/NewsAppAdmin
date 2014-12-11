@@ -10,7 +10,7 @@ define([
        var appRouter = Backbone.Router.extend({
 
              routes: {
-                   ""     :"fetching",
+                   ""     :"addNews",
              	"addNews": "addNews",
 	            "editNews": "editNews",
                 "deleteNews": "deleteNews",
@@ -18,24 +18,43 @@ define([
 	            
         	} ,
            initialize: function(options) {
-                 console.log("inside router");
+                this.addNews=null;
+                this.editNews=null;
+                this.deleteNews=null;
+                this.help=null;
            },
            addNews:function(){
-               console.log("add News");
-               var addNews = new addNewsView();
-
+               if(!this.addNews){
+                   this.addNews = new addNewsView();
+               }
+               else{
+                   this.addNews.initialize();
+               }
            },
            editNews:function(){
-               console.log("edit News");
-               var editNews=new editNewsView();
+               if(!this.editNews){
+                   this.editNews = new editNewsView();
+               }
+               else{
+                   this.editNews.initialize();
+               }
            },
            deleteNews:function(){
-               console.log("delete News");
-               var deleteNews=new deleteNewsView();
+               if(!this.deleteNews){
+                   this.deleteNews = new deleteNewsView();
+               }
+               else{
+                   this.deleteNews.initialize();
+               }
            },
            help:function(){
-               console.log("help");
-               var help=new helpView();
+               if(!this.help){
+                   this.help = new helpView();
+               }
+               else{
+                   console.log("inside help alreday");
+                   this.help.initialize();
+               }
            }
 
         	

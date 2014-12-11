@@ -2,7 +2,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templatePath/deleteNewsTemplate.html','models/deleteNewsModel',
+    'text!templatePath/deleteNewsTemplate.html',
+    'models/deleteNewsModel',
     'util/util'
 ], function( $,_, Backbone,deleteNewsTemplate,deleteNewsModel,Util) {
 
@@ -17,13 +18,11 @@ define([
             this.getNewsList();
          },
         render:function(){
-            console.log("news list--"+JSON.stringify(this.model._newsList));
             template = _.template(deleteNewsTemplate,this.model);
-
             this.$el.html(template);
         },
         getNewsList:function(){
-            var self=this;
+           var self=this;
            this.model.getFullNewsList(function(err,success){
                if(err){
                    console.log("error ---"+JSON.stringify(err));
@@ -34,6 +33,7 @@ define([
            })
         },
         removeNewsById:function(e){
+            var self=this;
             var _id = $(e.currentTarget).attr("data-id");
             console.log("id firsrt---"+_id);
             this.model.removeNewsById(_id,function(err,result){
@@ -42,12 +42,13 @@ define([
                 }
                 else{
                     console.log("success result ---"+JSON.stringify(result));
+                    self.getNewsList();
                 }
             })
 
         },
         events: {
-            'click #removeNews': 'removeNewsById'
+            'click .removeNews': 'removeNewsById'
 
         }
 

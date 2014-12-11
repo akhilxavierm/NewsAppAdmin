@@ -14,6 +14,11 @@ router.post('/', function(req, res) {
         if(error){
             console.log("error--in newsprovider"+JSON.stringify(error));
         }
+        else{
+            if(docs==1){
+                res.send("success");
+            }
+        }
         console.log("docs--"+JSON.stringify(docs));
         //res.send(docs);
     });
