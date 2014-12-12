@@ -24,26 +24,39 @@
     .innerMainContainer{
         width:24%;
         height:40px;
-        background-color: grey;
-        color:midnightblue;
+        background: -webkit-linear-gradient(brown, blue); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(brown, blue); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(brown, blue); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(brown, blue);
+
         border:2px solid black;
         font-size: 25px;
         float:left;
         text-align: center;
     }
+    .innerMainContainer:hover {
+        background: -webkit-linear-gradient(brown, cornflowerblue); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(brown, cornflowerblue); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(brown, cornflowerblue); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(brown, cornflowerblue);
+    }
     .innerMainContainer a{
         //width:500px;
         text-decoration: none;
+        color:wheat !important;
 
     }
     #addNewsContainer {
         text-align: center;
+        font-size: 24px;
+        font-family: cursive;
     }
     #deleteNewsContainer {
         text-align: center;
     }
     #editNewsContainer{
         text-align: center;
+
     }
     #helpNewsContainer{
         text-align: center;
@@ -84,6 +97,19 @@
     .dateSpan{
         float:right;
     }
+    .addNewinput{
+        text-align: center;
+        font-size: 20px;
+        width:auto;
+
+    }
+    .submitButton{
+        width:150px;
+        height:40px;
+        font-size: 22px;
+        border-bottom-right-radius: 5px solid black;
+    }
+
 </style>
 <body>
 
