@@ -40,7 +40,6 @@ app.post('/photos', function(req, res) {
     console.log("insdie photos");
     console.log(req.files);
 });
-console.log("new changes to be  cheryypicked");
 
 
 
