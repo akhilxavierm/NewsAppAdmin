@@ -8,6 +8,7 @@ define([
             url: url,
             type: type,
             data: data,
+            processData: false,
             success: function (res) {
                 console.log("ajax success--"+url+"---------"+JSON.stringify(res));
                 CallBack('', res);

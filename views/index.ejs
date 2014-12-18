@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://apis.google.com/js/client:platform.js" async defer></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script data-main="javascripts/main.js" src="javascripts/lib/require.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
@@ -133,14 +134,47 @@ Content: <input type="text"  id="content"><br>-->
     </div>
 </div>
 <br>
-<div style="widht:100%;border:5px solid black;margin-top:100px"></div>
+<div id="addNewsPage" style="widht:100%;border:5px solid black;margin-top:100px"></div>
 <div id="addNewsContainer"></div>
 <div id="deleteNewsContainer"></div>
 <div id="editNewsContainer"></div>
 <div id="helpContainer"></div>
+<div id="signIn" style="margin-left:40%;margin-right: 40%;width: 10%;">
+    <span id="signinButton">
+      <span
+              class="g-signin"
+              data-callback="signinCallback"
+              data-clientid="276644070234-90ga25fohanog4b0vibquc5ltjmcquc6.apps.googleusercontent.com"
+              data-cookiepolicy="single_host_origin"
+              data-requestvisibleactions="http://schema.org/AddAction"
+              data-scope="https://www.googleapis.com/auth/plus.login">
+      </span>
+    </span>
+</div>
 
 
 
 </body>
-</html>
+<script>
+    function signinCallback(authResult) {
+        console.log("auth resutl--"+JSON.stringify(authResult));
+        if (authResult['status']['signed_in']) {
+            console.log("Sign in done");
+            window.location="http://localhost:4000/#addNews";
+            // Update the app to reflect a signed in user
+            // Hide the sign-in button now that the user is authorized, for example:
+            document.getElementById('addNewsPage').setAttribute('style', 'display: show');
+            document.getElementById('signIn').setAttribute('style', 'display: none');
+        } else {
+            document.getElementById('addNewsPage').setAttribute('style', 'display: none');
+            // Update the app to reflect a signed out user
+            // Possible error values:
+            //   "user_signed_out" - User is signed-out
+            //   "access_denied" - User denied access to your app
+            //   "immediate_failed" - Could not automatically log in the user
+            console.log('Sign-in state: ' + authResult['error']);
+        }
+    }
+
+</script>
 </html>

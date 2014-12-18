@@ -10,7 +10,7 @@ define([
        var appRouter = Backbone.Router.extend({
 
              routes: {
-                   ""     :"addNews",
+                   ""     :"signInCallback",
              	"addNews": "addNews",
 	            "editNews": "editNews",
                 "deleteNews": "deleteNews",
@@ -22,6 +22,9 @@ define([
                 this.editNews=null;
                 this.deleteNews=null;
                 this.help=null;
+           },
+           signInCallback:function(){
+
            },
            addNews:function(){
                if(!this.addNews){
