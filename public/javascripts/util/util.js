@@ -3,12 +3,12 @@ define([
 ], function($) {
     var Util =function (){};
     Util.prototype.ajaxCall = function (url, type, data, CallBack) {
-        console.log("inside ajax call--"+url);
+        console.log("inside ajax call--"+JSON.stringify(data));
         var options = {
             url: url,
             type: type,
             data: data,
-            processData: false,
+
             success: function (res) {
                 console.log("ajax success--"+url+"---------"+JSON.stringify(res));
                 CallBack('', res);

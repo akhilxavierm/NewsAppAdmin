@@ -13,6 +13,7 @@ router.post('/', function(req, res) {
         time=req.body.time;
 
     var news={headline:headline,content:content,date:date,time:time};
+    console.log("news before--"+JSON.stringify(news));
     newsProvider.save(news,function(error, docs){
         if(error){
             console.log("error in addNews"+JSON.stringify(error));

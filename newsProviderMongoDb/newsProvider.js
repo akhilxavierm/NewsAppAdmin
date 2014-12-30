@@ -86,6 +86,7 @@ newsProvider.prototype.update=function(data,callback){
 };
 newsProvider.prototype.save = function(news, callback) {
     var self=this;
+    console.log("news----"+JSON.stringify(news));
     this.dbSettings(function(error,success){
         if(error)
             return callback(error);
