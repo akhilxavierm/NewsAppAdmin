@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer  = require('multer');
 
 var routes = require('./routes/index');
 var newsList = require('./routes/newsList');
@@ -15,10 +16,24 @@ var upload=require('./routes/upload');
 
 var app = express();
 var http = require('http').Server(app);
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 app.use( bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
+}));
+/*Configure the multer.*/
+
+app.use(multer({ dest: './public/images/',
+    rename: function (fieldname, filename) {
+        return filename+Date.now();
+    },
+    onFileUploadStart: function (file) {
+        console.log(file.originalname + ' is starting ...')
+    },
+    onFileUploadComplete: function (file) {
+        console.log(file.fieldname + ' uploaded to  ' + file.path);
+        done=true;
+    }
 }));
 
 // view engine setup
@@ -37,9 +52,14 @@ app.use('/newsList', newsList);
 app.use('/addNews',addNews);
 app.use('/removeNews',removeNews);
 app.use('/upload',upload);
-app.post('/photos', function(req, res) {
-    console.log("insdie photos");
-    console.log(req.files);
+app.post('/api/photo',function(req,res){
+    if(done==true){
+        console.log("haiiiii--------"+req.files.userPhoto.path);
+        var imagePath=req.files.userPhoto.path;
+        var res1 = imagePath.substring(7);
+        console.log("image path--------"+res1);
+        res.end(res1);
+    }
 });
 
 
