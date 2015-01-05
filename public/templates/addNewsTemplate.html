@@ -1,18 +1,45 @@
-    <h2>Create News</h2>
-    Headline:
-    <br>
-    <textarea type="text" name="Headline" class="addNewinput" id="addNewsHeadline" placeholder="Enter your news headline here"></textarea>
-    <br>
-    <br>
-    Content:
-    <br>
-    <textarea  name="Content" class="addNewinput" id="addNewsContent" placeholder="Enter your news content here"></textarea>
-    <br>
-    <br>
+<h2>Create News</h2>
+<div class="catagory" >
+    <div class="leftSide"> Catagory:</div>
+    <div class="rightSide">
+            <select id="section">
+                <option value="general">General</option>
+                <option value="us">Smartek US</option>
+                <option value="pune">Smartek Pune</option>
+                <option value="chennai">Smartek Chennai</option>
+            </select>
+            <br>
+            <br>
+    </div>
+</div>
+<div class="catagory" >
+    <div class="leftSide">  Headline:</div>
+    <div class="rightSide">
+        <textarea type="text" name="Headline"  id="addNewsHeadline" placeholder="Enter your news headline here"></textarea>
+        <br>
+        <br>
+     </div>
+</div>
+<div class="catagory" >
+    <div class="leftSide">Content:</div>
+    <div class="rightSide">
+        <textarea  name="Content"  id="addNewsContent" placeholder="Enter your news content here"></textarea>
+        <br>
+         <br>
+    </div>
+</div>
+<div class="catagory" >
     <form id        =  "uploadForm"
           enctype   =  "multipart/form-data"
           >
-        <input type="file" name="userPhoto" />
-        <input type="submit" value="Upload Image" name="submit" id="formSubmit">
+        <div class="leftSide">  Choose Image:</div>
+        <div class="rightSide">
+            <input type="file" name="userPhoto"  style="height:70px;width:200px"/>
+            <br>
+            <br>
+        </div>
+        <br>
+        <input type="submit" value="Submit" name="submit" id="formSubmit" class="submitButton" style="text-align: center">
     </form>
-    <input type="submit" class="submitButton" id="newsAdd">
+</div>
+    <!--<input type="submit" class="submitButton" id="newsAdd">

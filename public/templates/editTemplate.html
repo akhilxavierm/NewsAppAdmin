@@ -1,10 +1,20 @@
-<h2>Edit Your News</h2>
-Headline:
-<input type="text" name="Headline" id="editNewsHeadline" value="<%=headline%>">
-<br>
-<br>
-Content:
-<input type="text" name="Content" id="editNewsContent" value="<%=content%>">
-<br>
-<br>
-<input type="submit" id="editSubmit">
+<div class="editTemplateContainer">
+    <h2>Edit Your News</h2>
+    <div class="catagory" >
+        <div class="leftSide">  Headline:</div>
+        <div class="rightSide">
+        <textarea type="text" name="Headline" id="editNewsHeadline" ><%=headline%></textarea>
+        <br>
+        <br>
+        </div>
+    </div>
+    <div class="catagory" >
+        <div class="leftSide">Content:</div>
+        <div class="rightSide">
+                <textarea type="text" name="Content" id="editNewsContent"><%=content%></textarea>
+                <br>
+                <br>
+        </div>
+    </div>
+    <input type="submit" id="editSubmit">
+</div>

@@ -24,11 +24,12 @@ define([
             console.log("this coutn--"+this.count);
             this.count++;
             var self=this;
+            var section=document.getElementById('section').value;
             var headline=document.getElementById('addNewsHeadline').value;
             var content=document.getElementById('addNewsContent').value;
             var date=this.util.currentDate();
             var time=this.util.currentTime();
-            var data={headline:headline,content:content,imgPath:imgPath,date:date,time:time};
+            var data={section:section,headline:headline,content:content,imgPath:imgPath,date:date,time:time};
             this.model.addNews(data,function(err,success){
                 if(err){
                     console.log("error ---"+JSON.stringify(err));
