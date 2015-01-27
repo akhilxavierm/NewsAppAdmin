@@ -18,9 +18,9 @@ define([
                 callBack('','success');
             });
         },
-        removeNewsById:function(id,callBack){
-            var _id=id;
-            data= {id:_id};
+        removeNewsById:function(data1,callBack){
+
+            var  data=data1;
             this.util.ajaxCall("http://localhost:4000/removeNews","POST",data,function(err,result){
                 if(err)
                     return callBack(err);

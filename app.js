@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer  = require('multer');
 
+
+
 var routes = require('./routes/index');
 var newsList = require('./routes/newsList');
 var addNews=require('./routes/addNews');
@@ -36,6 +38,7 @@ app.use(multer({ dest: './public/images/',
     }
 }));
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -57,8 +60,9 @@ app.post('/api/photo',function(req,res){
         console.log("haiiiii--------"+req.files.userPhoto.path);
         var imagePath=req.files.userPhoto.path;
         var res1 = imagePath.substring(7);
-        console.log("image path--------"+res1);
-        res.end(res1);
+        var res2="http://localhost:4000/"+res1;
+        console.log("image path--------"+res2);
+        res.end(res2);
     }
 });
 

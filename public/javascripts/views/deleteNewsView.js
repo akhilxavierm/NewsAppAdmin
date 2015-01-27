@@ -35,8 +35,10 @@ define([
         removeNewsById:function(e){
             var self=this;
             var _id = $(e.currentTarget).attr("data-id");
+            var _imgPath=$(e.currentTarget).attr("data-image");
+            var data={id:_id,imgPath:_imgPath};
             console.log("id firsrt---"+_id);
-            this.model.removeNewsById(_id,function(err,result){
+            this.model.removeNewsById(data,function(err,result){
                 if(err){
                     console.log("error ---"+JSON.stringify(err));
                 }
