@@ -18,3 +18,210 @@ h1	{
 	  text-decoration: none;
 	  color:black;
 }
+/*new css changes*/
+ h1{
+        text-align: center;
+        font-size: 35px;
+    }
+    #mainContainer{
+        width:90%;
+        heiht:100%;
+        float:left;
+        margin-left:5%;
+        margin-right: 5%;
+        margin-top:30px;
+        margin-bottom:100px;
+
+    }
+    .innerMainContainer{
+        width:24%;
+        height:40px;
+        background: -webkit-linear-gradient(brown, blue); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(brown, blue); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(brown, blue); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(brown, blue);
+
+        border:2px solid black;
+        font-size: 25px;
+        float:left;
+        text-align: center;
+    }
+    .innerMainContainer:hover {
+        background: -webkit-linear-gradient(brown, cornflowerblue); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(brown, cornflowerblue); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(brown, cornflowerblue); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(brown, cornflowerblue);
+    }
+    .innerMainContainer a{
+        //width:500px;
+        text-decoration: none;
+        color:wheat !important;
+
+    }
+    #addNewsContainer {
+        text-align: center;
+        font-size: 24px;
+        font-family: cursive;
+    }
+    #deleteNewsContainer {
+        text-align: center;
+    }
+    #editNewsContainer{
+        text-align: center;
+
+    }
+    .editTemplateContainer{
+        text-align: center;
+        font-size: 24px;
+        font-family: cursive;
+    }
+    #helpNewsContainer{
+        text-align: center;
+    }
+    #addNewsContent{
+        height: 300px;
+        width:600px;
+    }
+    #addNewsHeadline{
+        height: 70px;
+        width:600px;
+
+    }
+    #editNewsContent{
+         height: 300px;
+         width:600px;
+     }
+    #editNewsHeadline{
+        height: 70px;
+        width:600px;
+
+    }
+    .list{
+        width:60%;
+        height:50px;
+        border:1px solid black;
+        text-align: left;
+        margin-left: 20%;
+        margin-right: 20%;
+
+    }
+    .list span{
+        font-size: 20px;
+        text-align: left;
+        padding-left: 10px;
+
+    }
+    .dateSpan{
+        float:right;
+    }
+    .addNewinput{
+        text-align: center;
+        font-size: 20px;
+        width:auto;
+
+    }
+    .submitButton{
+        width:150px;
+        height:40px;
+        font-size: 22px;
+        border-bottom-right-radius: 5px solid black;
+    }
+    .leftSide{
+
+    }
+    .rightSide{
+        width:60%;
+        float:left;
+        text-align: left;
+    }
+    .leftSide{
+        width:40%;
+        float:left;
+    }
+    textarea{
+        font-size: 20px;
+    }
+    .editListHeadline{
+        width:25%;
+        height:50px;
+        float:left;
+        border: 1px solid black;
+        text-align:center;
+        font: 24px bold
+    }
+    .editListContent{
+        width:35%;
+        height:50px;
+        float:left;
+        border: 1px solid black;
+        text-align:center;
+        font: 24px bold
+    }
+    .editListTime{
+        width:15%;
+        height:50px;
+        float:left;
+        border: 1px solid black;
+        text-align:center;
+        font: 24px bold
+    }
+    .editListDate{
+        width:10%;
+        height:50px;
+        float:left;
+        border: 1px solid black;
+        text-align:center;
+        font: 24px bold
+    }
+    .editListEdit{
+        width:14%;
+        height:50px;
+        float:left;
+        border: 1px solid black;
+        text-align:center;
+        font: 24px bold
+    }
+    .editListHeadlineRow{
+        width:24%;
+        height:50px;
+        padding-left:1%;
+        float:left;
+        border: 1px solid black;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .editLisContenttRow{
+         width:34%;
+         height:50px;
+        padding-left:1%;
+         float:left;
+         border: 1px solid black;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+     }
+    .editListTimeRow{
+        width:14%;
+        height:50px;
+        padding-left:1%;
+        float:left;
+        border: 1px solid black;
+
+    }
+    .editListDateRow{
+        width:9%;
+        height:50px;
+        padding-left:1%;
+        float:left;
+        border: 1px solid black;
+
+    }
+    .editListEditRow{
+        width:13%;
+        height:50px;
+        padding-left:1%;
+        float:left;
+        border: 1px solid black;
+
+    }
