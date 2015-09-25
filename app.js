@@ -6,11 +6,6 @@ var path = require('path');
 
 var app = express();
 var http = require('http').Server(app);
-var bodyParser = require('body-parser');
-app.use( bodyParser.json());       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-    extended: true
-}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,8 +13,12 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 console.log("path----"+__dirname);
+/*app.use(require('prerender-node'));
+app.use(require('prerender-node').set('afterRender', function(err, req, prerender_res) {
+    console.log("Aftger render"+JSON.stringify(prerender_res));
+}));*/
 // In our app.js configuration
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
 	console.log("haifa");
   var fragment = req.query._escaped_fragment_;
 
@@ -55,7 +54,7 @@ app.use(function(req, res, next) {
     res.send(404);
   }
 });
-
+*/
 
 
 

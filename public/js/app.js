@@ -2,8 +2,8 @@ var myModule=angular.module("myExpenseModule", [
   '720kb.datepicker','ngRoute','seo'
  ]);
 
-myModule .config(['$routeProvider',
-  function($routeProvider) {
+myModule.config(['$routeProvider','$locationProvider',
+  function($routeProvider,$locationProvider) {
     $routeProvider.
       when('/', {
         templateUrl: 'templates/home.html',
@@ -20,6 +20,6 @@ myModule .config(['$routeProvider',
       otherwise({
         redirectTo: '/'
       });
-     // $locationProvider.html5Mode(true);
+     $locationProvider.html5Mode(true);
   }]);
 

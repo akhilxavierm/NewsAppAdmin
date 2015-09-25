@@ -1,0 +1,4 @@
+<!DOCTYPE html>
+<html ng-app="myExpenseModule">
+    <div> this is my career snapshot</div>
+</html>
