@@ -1,5 +1,6 @@
-myModule.controller('aboutController',function($scope){
+myModule.controller('aboutController',function($scope,smartBannerFactory){
     
     $scope.name="about Name";
-    $scope.htmlReady();
+    smartBannerFactory.appId=20;
+    smartBannerFactory.appArgument="what the fuck";
 });

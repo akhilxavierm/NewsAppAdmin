@@ -23,3 +23,20 @@ myModule.config(['$routeProvider','$locationProvider',
      $locationProvider.html5Mode(true);
   }]);
 
+myModule.factory("smartBannerFactory", function() {
+    return {
+        appId: "",
+        appArgument: ""
+    }    
+});
+myModule.directive("smartBanner",function(smartBannerFactory){
+    return {
+        restrict: "A",
+        template: '<meta name="apple-itunes-app" content="app-id={{smartbanner.appId}}, app-argument = {{smartbanner.appArgument}}"></meta>',
+        replace: true,
+        link: function(scope) {
+            scope.smartbanner = smartBannerFactory;
+        }
+    } 
+
+});
