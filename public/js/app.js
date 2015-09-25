@@ -1,9 +1,9 @@
 var myModule=angular.module("myExpenseModule", [
-  '720kb.datepicker','ngRoute','seo'
- ]);
+  '720kb.datepicker','ngRoute'
+]);
 
 myModule.config(['$routeProvider','$locationProvider',
-  function($routeProvider,$locationProvider) {
+    function($routeProvider,$locationProvider) {
     $routeProvider.
       when('/', {
         templateUrl: 'templates/home.html',
@@ -18,25 +18,10 @@ myModule.config(['$routeProvider','$locationProvider',
         controller: 'careersController'
       }).
       otherwise({
-        redirectTo: '/'
+        redirectTo: '/'   
       });
      $locationProvider.html5Mode(true);
+
   }]);
 
-myModule.factory("smartBannerFactory", function() {
-    return {
-        appId: "",
-        appArgument: ""
-    }    
-});
-myModule.directive("smartBanner",function(smartBannerFactory){
-    return {
-        restrict: "A",
-        template: '<meta name="apple-itunes-app" content="app-id={{smartbanner.appId}}, app-argument = {{smartbanner.appArgument}}"></meta>',
-        replace: true,
-        link: function(scope) {
-            scope.smartbanner = smartBannerFactory;
-        }
-    } 
 
-});

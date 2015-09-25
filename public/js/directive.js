@@ -11,3 +11,16 @@ myModule.directive('ngEnter', function () {
         });
     };
 });
+
+myModule.directive("dynamicMeta",function(dynamicMetaFactory){
+    return {
+        restrict: "A",
+        template: '<meta name="apple-itunes-app" content="app-id={{dynamicMeta.appId}}, app-argument = {{dynamicMeta.appArgument}}"></meta>',
+        replace: true,
+        link: function(scope) {
+            scope.dynamicMeta = dynamicMetaFactory;
+        }
+    } 
+
+});
+

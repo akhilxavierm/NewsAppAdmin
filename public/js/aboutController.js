@@ -1,6 +1,6 @@
-myModule.controller('aboutController',function($scope,smartBannerFactory){
+myModule.controller('aboutController',function($scope,dynamicMetaFactory){
     
     $scope.name="about Name";
-    smartBannerFactory.appId=20;
-    smartBannerFactory.appArgument="what the fuck";
+    dynamicMetaFactory.appId=20;
+    dynamicMetaFactory.appArgument="what the fuck";
 });

@@ -71,3 +71,10 @@ myModule.service('dataManagement', function() {
         return filtredItems;
     }
 });
+
+myModule.factory("dynamicMetaFactory", function() {
+    return {
+        appId: "",
+        appArgument: ""
+    }    
+});
