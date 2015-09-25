@@ -13,10 +13,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 console.log("path----"+__dirname);
-/*app.use(require('prerender-node'));
-app.use(require('prerender-node').set('afterRender', function(err, req, prerender_res) {
-    console.log("Aftger render"+JSON.stringify(prerender_res));
-}));*/
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://localhost:3000/'));
 // In our app.js configuration
 /*app.use(function(req, res, next) {
 	console.log("haifa");
