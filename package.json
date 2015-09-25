@@ -19,7 +19,8 @@
         "sys": "0.0.1",
         "grunt-contrib-requirejs": "^0.4.4",
         "grunt-text-replace": "^0.4.0",
-        "grunt-contrib-clean": "^0.6.0"
+        "grunt-contrib-clean": "^0.6.0",
+        "prerender-node": "latest"
     },
     "devDependencies": {
         "grunt-contrib-jshint": "~0.6.4",

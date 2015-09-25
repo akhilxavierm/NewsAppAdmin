@@ -1,0 +1,100 @@
+ <h1>Simple expense manager project</h1>
+        <div id="form-box" >
+            <h2 ng-hide="editActive">Add a new item:</h2>
+            <h2 ng-show="editActive">Edit expense:</h2>
+            <div class="add-btn {{animation?'active':''}}">
+                <span class="add-text">Add a friend</span>
+                <div class="friend-input">
+                    <div><input type="text" placeholder="Eg: Vandy" ng-model="newFrndsName" ng-enter="addNewFrnd(newFrndsName)"/> </div>
+                </div>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x" ></i>
+                    <i class="fa fa-plus fa-stack-1x" title="Add a friend" ng-click="addAnimation(animation)"></i>
+                </span>
+            </div>
+            <form name="myForm" novalidate>
+                <div>
+                    <span>Type:</span>
+                    <select ng-model="selectedForm.type" name="type" required>
+                    <option value="" disabled selected>Type of payment</option>
+                        <option ng-repeat="item in selectedForm.types" value="{{item}}">{{item}}</option>
+                    </select>
+                    <span class="error-msg"  ng-show="!valid && myForm.type.$invalid">Should select payment type</span>
+                </div>
+                <div>
+                    <span>Add friend:</span>
+                    <select ng-model="selectedForm.selecfriendsName" multiple ng-multiple="true" name="friendsName" required>
+                        <option ng-repeat="item in selectedForm.friendsName" value="{{item}}" multiple >{{item}}</option>
+                    </select>
+                    <span class="error-msg"  ng-show="!valid && myForm.friendsName.$invalid">s
+                    Should select atlist one</span>
+                </div>
+                <div>
+                    <span>Name:</span> <input type="text" name="name" ng-model="selectedForm.name"placeholder="What did you spend on?" required>
+                    <span class="error-msg" ng-show="!valid && myForm.name.$invalid">name cannot be empty</span>
+                </div>
+                <div class="form-group">
+                    <span>Date:</span>
+                    <datepicker date-format="MM/dd/yyyy" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+                        <input ng-model="selectedForm.date" name="date" type="text" placeholder="Select Date" required/>
+                    </datepicker>
+                    <span class="error-msg" ng-show="!valid && myForm.date.$invalid">Date shold be proper</span>
+                </div>
+                <div>
+                    <span>Currency:</span>
+
+                    <select name="currency" ng-model="selectedForm.currency" required>
+                    <option value="" disabled selected>Type of Currency</option>
+                    <option ng-repeat="item in selectedForm.moneyType" value="{{item}}">{{item}}</option>
+                    </select>
+                    <span class="error-msg"  ng-show="!valid && myForm.currency.$invalid">Should select currency type</span>
+                </div>
+                <div>
+                    <span>Amount:</span>
+                    <input type="number" name="amount" ng-model="selectedForm.amount" placeholder="How much?" min="0" required>
+                     <span class="error-msg" ng-show="!valid &&  myForm.amount.$invalid">Amount should be proper</span>
+
+                </div>
+                <input type="submit" class="button" ng-click="addNewExpense(selectedForm,myForm.$valid)" ng-hide="editActive" value="Add a new expense" ng-hide="editActive">
+                <input type="submit" class="button" ng-click="addNewExpense(selectedForm,myForm.$valid)" value="Done" ng-show="editActive">
+            </form>
+        </div>
+        <div class="filter-block">
+            <div class="filter-option">
+                <span>Filter by friend:</span>
+                <select ng-model="filteredFrnd" name="frndFilter" ng-change="friendFilter(filteredFrnd)">
+                        <option value="" selected>All List</option>
+                        <option ng-repeat="item in selectedForm.friendsName" value="{{item}}" >{{item}}</option>
+                </select>
+            </div>
+            <div class="filter-option">
+                <span>Currency:</span>
+                <select name="currency" ng-model="currency" ng-init="currency = currencies[0]"  ng-change="currencyChange(currency)" >
+                    <option ng-repeat="item in currencies" value="{{item}}">{{item}}</option>
+                    </select>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th class="type" class="center">Type</th>
+                <th class="name">Name</th>
+                <th class="friendsName">FriendsName</th>
+                <th class="date">date</th>
+                <th class="amount">amount</th>
+                <th class="table-btn">edit</th>
+                <th class="table-btn">delete</th>
+            </tr>
+            <tr ng-repeat="items in allFieldITems">
+                <td><div class="type" class="center">{{items.type}}</div></td>
+                <td><div class="name">{{items.name}}</div></td>
+                <td><div class="friendsName">{{items.selecfriendsName.toString()}}</div></td>
+                <td><div class="date">{{items.date |date:'dd/MM/yyyy'}}</div></td>
+                <td><div class="amount">{{items.dollarValue | mycurrency:currencySymbol}}</div></td>
+                <td class="table-btn" ng-click="editItem(items.id)" ><i class="fa fa-pencil"></i></td>
+                <td class="table-btn" ng-click="deleteItem(items.id)"><i class="fa fa-trash-o"></i></td>
+            </tr>
+            <tr ng-show="isEmpty">
+                <td colspan="7"><span>Your added items will show up here!</span></td>
+            </tr>
+
+        </table>
