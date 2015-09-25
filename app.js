@@ -59,7 +59,7 @@ app.use(require('prerender-node').set('prerenderServiceUrl', 'http://localhost:3
 
 
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
 	console.log("here");
   res.render('index');
 
